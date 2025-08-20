@@ -9,12 +9,18 @@ dotenv.config();
 const app = express();
 const upload = multer();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://ali-na-abaya.github.io",
+    methods: ["GET", "POST"],
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
-  console.error(" Ошибка: GMAIL_USER или GMAIL_PASS не заданы в .env");
+  console.error("Ошибка: GMAIL_USER или GMAIL_PASS не заданы в .env");
   process.exit(1);
 }
 
@@ -36,7 +42,7 @@ app.post("/vacancy", upload.single("file"), async (req, res) => {
         email || "no-reply@example.com"
       }>`,
       to: process.env.GMAIL_USER,
-      subject: " Новая заявка по вакансии",
+      subject: "Новая заявка по вакансии",
       text: `Имя: ${name || "—"}\nФамилия: ${surname || "—"}\nEmail: ${
         email || "—"
       }\nСообщение: ${message || "—"}`,
@@ -51,9 +57,9 @@ app.post("/vacancy", upload.single("file"), async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    res.json({ success: true, message: "Заявка по вакансии отправлена " });
+    res.json({ success: true, message: "Заявка по вакансии отправлена" });
   } catch (err) {
-    console.error(" Ошибка при отправке (вакансии):", err);
+    console.error("Ошибка при отправке (вакансии):", err);
     res
       .status(500)
       .json({ success: false, message: "Ошибка при отправке вакансии" });
@@ -74,9 +80,9 @@ app.post("/contact", upload.none(), async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    res.json({ success: true, message: "Контактная форма отправлена " });
+    res.json({ success: true, message: "Контактная форма отправлена" });
   } catch (err) {
-    console.error(" Ошибка при отправке (контакт):", err);
+    console.error("Ошибка при отправке (контакт):", err);
     res.status(500).json({
       success: false,
       message: "Ошибка при отправке контактной формы",
@@ -85,7 +91,7 @@ app.post("/contact", upload.none(), async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(" Сервер работает! Доступные роуты: POST /vacancy, POST /contact");
+  res.send("Сервер работает! Доступные роуты: POST /vacancy, POST /contact");
 });
 
 const PORT = process.env.PORT || 5050;
