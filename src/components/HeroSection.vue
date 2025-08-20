@@ -41,12 +41,7 @@ onMounted(() => {
   border-bottom: 50px solid black;
   border-radius: 190px 0px 0px 0px;
 
-  background: linear-gradient(
-    to bottom,
-    #000000 0%,
-    /* тёмный графит */ #000000 50%,
-    /* лёгкий переход */ #780000 100% /* аккуратный бордовый внизу */
-  );
+  background: linear-gradient(to bottom, #000000 0%, #000000 50%, #780000 100%);
 }
 
 .logo-wrapper {
@@ -74,7 +69,7 @@ onMounted(() => {
 
 .nav-links a {
   position: relative;
-  color: #5c0000; /* более спокойный бордовый */
+  color: #5c0000;
   font-weight: 400;
   text-decoration: none;
   font-family: Inter, sans-serif;
@@ -113,7 +108,6 @@ onMounted(() => {
   color: #ffffff;
   text-transform: uppercase;
 
-  /* Эффект свечения */
   text-shadow: 0 0 10px #ff0000, 0 0 20px #ff1a1a, 0 0 40px #ff3333,
     0 0 80px #ff4d4d;
 
@@ -177,7 +171,6 @@ onMounted(() => {
     border-radius: 50%;
   }
 
-  /* Навигация под лого */
   .nav-links {
     position: absolute;
     top: 400px;
