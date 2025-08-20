@@ -154,9 +154,13 @@ const submitForm = async () => {
       formData.append("file", file.value);
     }
 
-    const res = await axios.post("http://localhost:5050/vacancy", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const res = await axios.post(
+      "https://backend-0a1p.onrender.com/vacancy",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
 
     if (res.data.success) {
       toast.success(" Письмо успешно отправлено!", {

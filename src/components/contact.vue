@@ -5,9 +5,10 @@
   >
     <img
       class="absolute inset-0 w-full h-full object-cover blur-md"
-      src="../assets/back.png"
+      :src="back"
       alt="Background"
     />
+    alt="Background" />
 
     <div
       class="absolute mobil top-0 left-0 md:w-1/3 w-full h-full z-20 flex flex-col justify-center px-6 md:px-10 py-12 bg-white/10 backdrop-blur-xl shadow-xl md:rounded-r-2xl overflow-hidden"
@@ -76,19 +77,19 @@
           href="https://t.me/EnterpriseHR
 "
           class="hover:text-white transition"
-          ><img src="../assets/telega.png" class="w-6 h-6" alt=""
+          ><img :src="telega" class="w-6 h-6" alt=""
         /></a>
         <a
           href="https://wa.me/79104901066?text=Здравствуйте!%20Хочу%20узнать%20подробнее"
           target="_blank"
         >
-          <img src="../assets/watsap.png" class="w-6 h-6" alt="WhatsApp" />
+          <img :src="watsap" class="w-6 h-6" alt="WhatsApp" />
         </a>
 
         <a
           href="https://www.linkedin.com/company/enterprisehr-agency/?viewAsMember=true"
           class="hover:text-white transition"
-          ><img src="../assets/link.png" class="w-6 h-6" alt=""
+          ><img :src="link" class="w-6 h-6" alt=""
         /></a>
       </div>
     </div>
@@ -99,6 +100,10 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useToast } from "vue-toastification";
+import back from "../assets/back.png";
+import telega from "../assets/telega.png";
+import watsap from "../assets/watsap.png";
+import link from "../assets/link.png";
 
 const toast = useToast();
 
@@ -112,7 +117,7 @@ const formData = ref({
 const handleSubmit = async () => {
   try {
     const res = await axios.post(
-      "http://localhost:5050/contact",
+      "https://backend-0a1p.onrender.com/contact",
       formData.value
     );
 

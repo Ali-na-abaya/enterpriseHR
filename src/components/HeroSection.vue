@@ -2,7 +2,7 @@
   <body class="bg-black text-white">
     <section class="hero-section">
       <div class="logo-wrapper" v-if="showLogo">
-        <img src="../assets/project.png" alt="ENT Logo" class="rotating-logo" />
+        <img :src="project" alt="ENT Logo" class="rotating-logo" />
       </div>
 
       <nav class="nav-links text-white">
@@ -18,7 +18,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-
+import project from "../assets/project.png";
 const showLogo = ref(false);
 
 onMounted(() => {
