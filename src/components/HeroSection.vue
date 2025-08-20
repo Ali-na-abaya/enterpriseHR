@@ -11,7 +11,7 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <h1 class="main-title">ENTERPRISE</h1>
+      <h1 class="main-title">ENTERRISEHR agency</h1>
     </section>
   </body>
 </template>
@@ -31,36 +31,39 @@ onMounted(() => {
 <style scoped>
 .hero-section {
   position: relative;
-  background: #780000;
-  background-image: url("/grain-texture.png");
-  background-blend-mode: multiply;
-  padding: 4rem;
   height: 100vh;
+  padding: 4rem;
   overflow: hidden;
+
   border-left: 40px solid black;
   border-right: 50px solid black;
   border-top: 40px solid black;
   border-bottom: 50px solid black;
   border-radius: 190px 0px 0px 0px;
+
+  background: linear-gradient(
+    to bottom,
+    #000000 0%,
+    /* тёмный графит */ #000000 50%,
+    /* лёгкий переход */ #780000 100% /* аккуратный бордовый внизу */
+  );
 }
 
-/* Лого */
 .logo-wrapper {
   position: absolute;
-
-  top: 0.1rem;
-  left: 0.3rem;
+  top: 2rem;
+  left: 2rem;
   animation: slideIn 1s ease-out forwards;
-  z-index: 100;
 }
 
 .rotating-logo {
-  width: 250px;
-  height: 250px;
-  animation: spin 8s linear infinite;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  animation: spin 12s linear infinite;
+  filter: drop-shadow(0 0 15px #ff0000);
 }
 
-/* Навигация */
 .nav-links {
   position: absolute;
   top: 2rem;
@@ -71,10 +74,10 @@ onMounted(() => {
 
 .nav-links a {
   position: relative;
-  color: black;
+  color: #5c0000; /* более спокойный бордовый */
   font-weight: 400;
   text-decoration: none;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
   margin-top: 15px;
@@ -90,7 +93,7 @@ onMounted(() => {
   bottom: 0;
   width: 0%;
   height: 2px;
-  background-color: black;
+  background-color: rgb(130, 10, 10);
   transition: width 0.4s ease, left 0.4s ease;
   transform: translateX(-50%);
 }
@@ -99,20 +102,24 @@ onMounted(() => {
   width: 100%;
   left: 50%;
 }
-
 .main-title {
   position: absolute;
-  bottom: -55px;
+  bottom: -30px;
   left: -11px;
-  font-size: 152px;
-  letter-spacing: 1px;
-
-  color: black;
-
+  font-size: 81px;
+  letter-spacing: 2px;
   font-family: "Climate Crisis", sans-serif;
+
+  color: #ffffff;
+  text-transform: uppercase;
+
+  /* Эффект свечения */
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff1a1a, 0 0 40px #ff3333,
+    0 0 80px #ff4d4d;
+
   transform: translateY(200px);
   opacity: 0;
-  animation: slideUp 1s ease-out forwards;
+  animation: slideUp 1.2s ease-out forwards;
 }
 
 @keyframes spin {
@@ -186,8 +193,8 @@ onMounted(() => {
   }
 
   .main-title {
-    bottom: -16px;
-    font-size: clamp(40px, 10.2vw, 50px);
+    bottom: -10px;
+    font-size: clamp(20px, 5.6vw, 30px);
 
     transform: translate(-50%, 200px);
 
