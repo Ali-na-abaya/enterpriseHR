@@ -69,7 +69,7 @@ onMounted(() => {
 
 .nav-links a {
   position: relative;
-  color: #5c0000;
+  color: #ff0000;
   font-weight: 400;
   text-decoration: none;
   font-family: Inter, sans-serif;
