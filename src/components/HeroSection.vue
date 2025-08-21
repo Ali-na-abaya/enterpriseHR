@@ -186,8 +186,8 @@ onMounted(() => {
   }
 
   .main-title {
-    bottom: -10px;
-    font-size: clamp(20px, 5.6vw, 30px);
+    bottom: -6px;
+    font-size: clamp(20px, 5.7vw, 30px);
 
     transform: translate(-50%, 200px);
 
