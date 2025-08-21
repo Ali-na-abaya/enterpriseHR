@@ -66,13 +66,18 @@
       </div>
 
       <!-- other -->
-      <div>
+
+      <div v-if="job">
         <h2 class="section-title">JOB DETAILS</h2>
         <h1 class="job-title">{{ job.title }}</h1>
 
         <h2 class="subheading">What we expect:</h2>
-        <ul class="list">
+        <ul class="list" v-if="job && job.expect">
           <li v-for="(req, idx) in job.expect" :key="idx">{{ req }}</li>
+        </ul>
+        <h2 class="subheading">Your daily routine</h2>
+        <ul class="list" v-if="job && job.routine">
+          <li v-for="(req, idx) in job.routine" :key="idx">{{ req }}</li>
         </ul>
 
         <h2 class="subheading">Your values:</h2>
@@ -104,28 +109,33 @@
 
 <script setup>
 import { useRoute, useRouter } from "vue-router";
-import { jobs } from "../data/jobs";
-import { computed, ref } from "vue";
+import { ref, computed, onMounted } from "vue";
 import axios from "axios";
 import { useToast } from "vue-toastification";
-
+import { fetchJobs } from "../data/jobs";
+const hover = ref(false);
 const showForm = ref(false);
 const consent = ref(false);
-
 const name = ref("");
 const surname = ref("");
 const email = ref("");
 const file = ref(null);
-const message = ref("");
 
+const jobs = ref([]);
 const route = useRoute();
 const router = useRouter();
-
 const toast = useToast();
 
-const job = computed(() => jobs.find((j) => j.id === Number(route.params.id)));
+// Загружаем вакансии из Google Sheets
+onMounted(async () => {
+  jobs.value = await fetchJobs();
+});
+
+const job = computed(() =>
+  jobs.value.find((j) => j.id === Number(route.params.id))
+);
 const otherJobs = computed(() =>
-  jobs.filter((j) => j.id !== Number(route.params.id))
+  jobs.value.filter((j) => j.id !== Number(route.params.id))
 );
 
 function goToJob(id) {
@@ -260,7 +270,7 @@ const submitForm = async () => {
   margin-bottom: 2rem;
 }
 .subheading {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -268,7 +278,8 @@ const submitForm = async () => {
 .list {
   list-style: disc;
   padding-left: 1.5rem;
-  color: #e5e5e5;
+  color: #bcbaba;
+  font-size: 1.6ren;
 }
 .list-inline {
   display: flex;

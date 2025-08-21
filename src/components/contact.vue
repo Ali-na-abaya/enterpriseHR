@@ -80,7 +80,7 @@
           ><img :src="telega" class="w-6 h-6" alt=""
         /></a>
         <a
-          href="https://wa.me/79104901066?text=Здравствуйте!%20Хочу%20узнать%20подробнее"
+          href="https://wa.me/79060229477?text=Здравствуйте!%20Хочу%20узнать%20подробнее"
           target="_blank"
         >
           <img :src="watsap" class="w-6 h-6" alt="WhatsApp" />
@@ -91,6 +91,25 @@
           class="hover:text-white transition"
           ><img :src="link" class="w-6 h-6" alt=""
         /></a>
+        <a
+          href="https://career.habr.com/companies/enterprisehr"
+          class="hover:text-white transition"
+          target="_blank"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-6 h-6"
+          >
+            <rect width="24" height="24" rx="4" fill="#808080" />
+            <text x="6" y="17" font-size="14" font-weight="bold" fill="white">
+              H
+            </text>
+          </svg>
+        </a>
       </div>
     </div>
   </div>

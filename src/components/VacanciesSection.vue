@@ -21,17 +21,20 @@
 <script setup>
 import { onMounted, ref, nextTick } from "vue";
 import { useRouter } from "vue-router";
-import { jobs } from "../data/jobs";
+import { loadJobs } from "../data/jobs";
 
 const router = useRouter();
 const jobCards = ref([]);
 const visibleCards = ref([]);
+const jobs = ref([]);
 
 function goToJob(id) {
   router.push(`/job/${id}`);
 }
 
 onMounted(async () => {
+  jobs.value = await loadJobs();
+
   await nextTick();
   jobCards.value = jobCards.value.flatMap((el) => (el ? [el] : []));
 
